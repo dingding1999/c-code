@@ -1,0 +1,61 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<time.h>//time（）函数的头文件 time返回一个长整型 time的参数是一个整形指针 
+#include<stdlib.h>
+void suiji() //生成随机数
+{
+	int a = 0;
+	//srand((unsigned int)time(NULL));//播种 unsigned int为强制类型转换 NULL空指针
+	a = rand()%100+1;//产生1----100随机数
+	int b = 0;
+    int j = 0;
+	for (;;)
+	{	
+		printf("你猜\n");
+		scanf("%d", &b);
+		if (b > a)
+		{
+			printf("大了\n");
+			
+		}
+		else if (b < a)
+		{
+			printf("小了\n");
+		}
+		else
+		{
+			printf("合适\n");
+			break;
+		}
+
+	}
+}
+void caidan()
+{
+	printf("*******************************\n");
+	printf("*   1 in   ****  0 out  *******\n");
+	printf("*******************************\n");
+}
+int main()
+{
+	srand((unsigned int)time(NULL));//把函数里面的这句放到主函数里面 不要把种子放在for循环内部
+	int i = 0;
+	for (i = 1; i;)
+	{
+		caidan();
+		printf("请选择\n");
+		scanf("%d", &i);
+		if (i == 1)
+		{
+			suiji();
+		}
+		else if (i == 0)
+			break;
+		else
+		{
+			printf("请重新输入\n");
+			continue;
+		}
+	}
+	printf("game over");
+}
